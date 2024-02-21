@@ -1,11 +1,24 @@
 {
   "name": "digory-kirke",
   "module": "index.ts",
-  "type": "module",
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "wrangler": "^3.28.3"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "load-env": "./load-env.sh",
+    "build-docs": "bun buildSite.ts",
+    "dev": "wrangler dev",
+    "deploy:preview": "wrangler preview --env development",
+    "deploy:prod": "wrangler publish --env production"
+  },
+  "type": "module",
+  "dependencies": {
+    "fast-glob": "^3.3.2",
+    "marked": "^12.0.0",
+    "yaml": "^2.3.4"
   }
 }
