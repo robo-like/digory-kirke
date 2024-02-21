@@ -1,0 +1,1 @@
+This introduction is crafted to set the stage for users to understand the purpose, features, and initial setup of Tumnus, with a nod to the challenges of event-driven architecture that it aims to solve.
