@@ -1,8 +1,10 @@
 ---
+
 title: "The Chronicles of Narnia"
 date: 2024-02-13
 tags: ["fantasy", "literature", "C.S. Lewis"]
 author: "C.S. Lewis"
+
 ---
 
 # Introduction to Narnia
