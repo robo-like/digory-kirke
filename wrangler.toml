@@ -1,0 +1,8 @@
+main = "main.ts"
+compatibility_date = "2024-02-08"
+
+[env.production]
+name = "dickory-doc-production"
+
+[env.development]
+name = "dickory-doc-development"
