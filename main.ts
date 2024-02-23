@@ -15,7 +15,7 @@ export default {
     ctx: ExecutionContext,
   ): Promise<Response> {
     const url = new URL(request.url);
-    const pathname = url.pathname;
+    const pathname = decodeURIComponent(url.pathname);
 
     // console.log(pathname);
     // console.log(site.pages);
