@@ -1,22 +1,27 @@
 import fg from "fast-glob";
-import { pattern, filePath, meta } from './buildSite.args'
-import { writeJsonArrayToFile } from './buildSite.writeToFile'
-import { filesToPages } from './buildSite.filesToPages'
+import { filePath, meta, pattern, basePath } from "./buildSite.args";
+import { filesToPages } from "./buildSite.filesToPages";
+import { writeJsonArrayToFile } from "./buildSite.writeToFile";
+import { getTheme } from "./buildSite.getTheme";
 
 /**
---------------- Entry point for the Dirgory Kirke site builder.
+    ---------   Entry point for the Dirgory Kirke site builder.
 */
 async function main() {
   const files = await fg(pattern);
-  const pages = await filesToPages(files);
+  const { pages, sidebar } = await filesToPages(files);
+
+  const theme = await getTheme();
 
   writeJsonArrayToFile(filePath, {
     pages,
     meta,
+    sidebar,
+    theme,
   })
     .then(() => console.log("JSON array written to file successfully."))
     .catch((error) => console.error(error))
     .finally(process.exit);
 }
 
-main()
+main();
