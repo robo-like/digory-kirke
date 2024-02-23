@@ -1,5 +1,9 @@
-import site from "./docs/site.built.json";
+import site from "./tumnus-docs/site.built.json";
+import { generatePage } from "./main.generatePage";
 
+if (!site.pages) {
+  throw new Error("site must be pre-built prior to running the server");
+}
 export interface Env {
   API_HOST: string;
 }
@@ -12,12 +16,21 @@ export default {
   ): Promise<Response> {
     const url = new URL(request.url);
     const pathname = url.pathname;
-    console.log(pathname);
-    console.log(site.pages);
+
+    // console.log(pathname);
+    // console.log(site.pages);
+
+    if (pathname == "/") {
+      //@ts-ignore
+      return new Response(generatePage("/readme.md", site), {
+        status: 200,
+        headers: { "Content-Type": "text/html" },
+      });
+    }
     //@ts-ignore
     if (site.pages[pathname]) {
       //@ts-ignore
-      return new Response(site.pages[pathname].content, {
+      return new Response(generatePage(pathname, site), {
         status: 200,
         headers: { "Content-Type": "text/html" },
       });
