@@ -14,3 +14,27 @@ article.content {
 }
 article.title {
 }
+/* For all <code> */
+pre {
+    padding: 3rem;
+    border-radius: 0.2rem;
+    background: #ffeff0;
+}
+code {
+    font-family: MyFancyCustomFont, monospace;
+    font-size: inherit;
+}
+
+/* Code in text */
+p > code,
+li > code,
+dd > code,
+td > code {
+    background: #ffeff0;
+    word-wrap: break-word;
+    box-decoration-break: clone;
+    border-radius: 0.2rem;
+}
+code.language-typescript {
+    color: #294e80; /* TypeScript brand color, adjust if needed */
+}
