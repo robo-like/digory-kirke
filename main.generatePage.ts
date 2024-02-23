@@ -4,11 +4,13 @@ import type { TreeNode } from "./buildSite.genSidebar";
 export function generatePage(path: string, site: Site): String {
   const page: Page = site.pages[path];
 
+  const layout = site.theme.layout;
+  const css = site.theme.css;
   const sidebar = `<ul>${sidebarTreeToHtml(site.sidebar)}</ul>`;
   const content = page.content;
   const title = page.title;
 
-  return renderTemplate(content, { sidebar, title });
+  return renderTemplate(layout, { sidebar, content, title, css });
 }
 
 function sidebarTreeToHtml(node: TreeNode): String {
